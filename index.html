@@ -4,409 +4,128 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Le Jeu de l'amour et du hasard — Marivaux</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<meta name="description" content="Exploration interactive du double déguisement dans Le Jeu de l'amour et du hasard de Marivaux (1730). Produit créatif · FREN 309 · 2026.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --gold: #B8922A;
-    --gold-light: #D4A843;
-    --gold-pale: #F5EDD6;
-    --ink: #1A1410;
-    --ink-mid: #3D2E22;
-    --ink-soft: #6B5744;
-    --parchment: #FAF6EE;
-    --parchment-dark: #F0E8D6;
-    --rose: #9E4E4E;
-    --teal: #2E6B68;
-    --border: rgba(184,146,42,0.25);
-    --border-strong: rgba(184,146,42,0.5);
-  }
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --gold:#B8922A;--gold-light:#D4A843;--gold-pale:#F5EDD6;
+  --ink:#1A1410;--ink-mid:#3D2E22;--ink-soft:#6B5744;
+  --parchment:#FAF6EE;--parchment-dark:#F0E8D6;
+  --rose:#9E4E4E;--teal:#2E6B68;
+  --border:rgba(184,146,42,0.25);--border-strong:rgba(184,146,42,0.5);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--parchment);color:var(--ink);line-height:1.7;font-size:18px;}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--parchment);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:56px;}
+.nav-brand{font-family:'Playfair Display',serif;font-size:14px;color:var(--gold);letter-spacing:0.05em;text-decoration:none;font-style:italic;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
 
-  html { scroll-behavior: smooth; }
+/* HERO */
+#hero{text-align:center;padding:7rem 2rem 5rem;border-bottom:1px solid var(--border);}
+.ornament{font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block;}
+.hero-rule{display:flex;align-items:center;gap:1rem;justify-content:center;margin-bottom:2rem;}
+.hero-rule span{width:80px;height:1px;background:var(--border-strong);}
+.diamond{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);display:inline-block;}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:600;line-height:1.1;color:var(--ink);margin-bottom:0.5rem;}
+h1 em{font-style:italic;font-weight:400;color:var(--ink-mid);}
+.hero-sub{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:var(--ink-soft);margin-bottom:2.5rem;}
+.hero-desc{max-width:520px;margin:0 auto 3rem;font-size:1.05rem;color:var(--ink-mid);font-style:italic;line-height:1.9;}
+.hero-nav{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;}
+.hero-nav a{font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;}
+.hero-nav a:hover{color:var(--gold);border-color:var(--gold);}
 
-  body {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    background: var(--parchment);
-    color: var(--ink);
-    line-height: 1.7;
-    font-size: 18px;
-  }
+/* SECTIONS */
+.site-section{padding:5rem 2rem;max-width:900px;margin:0 auto;}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto;}
+.sec-label{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;display:block;}
+h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:400;color:var(--ink);margin-bottom:0.25rem;}
+.sec-rule{display:flex;align-items:center;gap:12px;margin:1.25rem 0 2rem;}
+.sec-rule-line{flex:1;height:1px;background:var(--border);}
+.sec-rule-dot{color:var(--gold);font-size:13px;}
 
-  /* NAV */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: var(--parchment);
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 3rem;
-    height: 56px;
-  }
-  .nav-brand {
-    font-family: 'IM Fell English', serif;
-    font-size: 14px;
-    color: var(--gold);
-    letter-spacing: 0.05em;
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-size: 13px;
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--gold); }
+/* MASQUES */
+.intro-p{font-size:1rem;color:var(--ink-soft);font-style:italic;margin-bottom:2rem;line-height:1.8;}
+.prog-wrap{margin-bottom:2rem;}
+.prog-label{font-size:13px;color:var(--ink-soft);margin-bottom:6px;letter-spacing:0.04em;}
+.prog-track{height:2px;background:var(--border);border-radius:1px;}
+.prog-fill{height:100%;background:var(--gold);border-radius:1px;width:0%;transition:width 0.5s;}
+.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:1.5rem;}
+.pcard{border:1px solid var(--border);background:#fff;padding:1.5rem;cursor:pointer;transition:border-color 0.2s,transform 0.15s;position:relative;overflow:hidden;}
+.pcard::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--border-strong);transition:background 0.3s;}
+.pcard:hover{border-color:var(--border-strong);transform:translateY(-2px);}
+.pcard.revealed::before{background:var(--gold);}
+.pcard.revealed{border-color:rgba(184,146,42,0.45);}
+.pc-label{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.pc-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;color:var(--ink);margin-bottom:2px;}
+.pc-role{font-size:0.85rem;color:var(--ink-soft);font-style:italic;margin-bottom:12px;}
+.pc-badge{display:inline-block;font-size:11px;padding:3px 10px;border:1px solid currentColor;letter-spacing:0.05em;}
+.badge-on{color:var(--rose);}
+.badge-off{color:var(--teal);}
+.pc-hint{font-size:12px;color:var(--gold);margin-top:10px;font-style:italic;}
+.detail-box{border:1px solid var(--border-strong);background:var(--gold-pale);padding:1.75rem;display:none;margin-bottom:1rem;}
+.detail-box.show{display:block;}
+.detail-box h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:0.75rem;}
+.detail-box p{font-size:0.95rem;color:var(--ink-mid);margin-bottom:1rem;line-height:1.7;}
+.dquote{border-left:2px solid var(--gold);padding-left:1rem;font-style:italic;font-size:0.95rem;color:var(--ink-soft);}
+.reset-btn{font-size:13px;color:var(--ink-soft);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px;font-family:'Cormorant Garamond',serif;font-style:italic;padding:0;}
 
-  /* HERO */
-  #hero {
-    min-height: 92vh;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center;
-    padding: 6rem 2rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-ornament {
-    font-size: 13px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.5rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
-  }
-  .hero-rule {
-    display: flex; align-items: center; gap: 1rem;
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.3s forwards;
-  }
-  .hero-rule span { flex: 1; height: 1px; background: var(--border-strong); max-width: 80px; }
-  .hero-rule-diamond {
-    width: 6px; height: 6px;
-    background: var(--gold);
-    transform: rotate(45deg);
-  }
-  h1.hero-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(2.8rem, 6vw, 5.5rem);
-    font-weight: 600;
-    line-height: 1.1;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-    opacity: 0;
-    animation: fadeUp 0.9s 0.4s forwards;
-  }
-  h1.hero-title em {
-    font-style: italic;
-    font-weight: 400;
-    color: var(--ink-mid);
-  }
-  .hero-subtitle {
-    font-family: 'IM Fell English', serif;
-    font-size: 1.15rem;
-    font-style: italic;
-    color: var(--ink-soft);
-    margin-bottom: 3rem;
-    opacity: 0;
-    animation: fadeUp 0.9s 0.55s forwards;
-  }
-  .hero-desc {
-    max-width: 520px;
-    font-size: 1.1rem;
-    color: var(--ink-mid);
-    font-style: italic;
-    line-height: 1.8;
-    margin-bottom: 3rem;
-    opacity: 0;
-    animation: fadeUp 0.9s 0.7s forwards;
-  }
-  .hero-scroll {
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-    opacity: 0;
-    animation: fadeUp 0.9s 0.9s forwards;
-  }
-  .hero-scroll span { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
-  .scroll-line {
-    width: 1px; height: 40px;
-    background: linear-gradient(to bottom, var(--gold), transparent);
-    animation: pulse 2s infinite;
-  }
+/* INTRIGUE */
+.acte-nav{display:flex;border-bottom:1px solid var(--border);margin-bottom:2.5rem;}
+.acte-btn{padding:0.75rem 2rem;background:none;border:none;border-bottom:2px solid transparent;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--ink-soft);cursor:pointer;letter-spacing:0.05em;margin-bottom:-1px;transition:all 0.2s;}
+.acte-btn:hover{color:var(--ink);}
+.acte-btn.on{color:var(--gold);border-bottom-color:var(--gold);}
+.acte-panel{display:none;}
+.acte-panel.on{display:block;}
+.moment{display:flex;gap:1.5rem;align-items:flex-start;padding:1.25rem 0;border-bottom:1px solid var(--border);}
+.moment:last-child{border-bottom:none;}
+.avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;font-weight:600;flex-shrink:0;}
+.av-s{background:#FAECE7;color:#993C1D;}
+.av-d{background:#E6F1FB;color:#185FA5;}
+.av-o{background:#FAEEDA;color:#854F0B;}
+.av-b{background:#E1F5EE;color:#0F6E56;}
+.mom-who{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+.mom-text{font-size:0.95rem;color:var(--ink-mid);line-height:1.7;}
+.mom-quote{margin-top:10px;padding:10px 14px;background:var(--gold-pale);border-left:2px solid var(--gold);font-style:italic;font-size:0.9rem;color:var(--ink-soft);}
 
-  /* SECTIONS */
-  section { padding: 6rem 2rem; max-width: 900px; margin: 0 auto; }
-  .section-label {
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 0.75rem;
-    font-family: 'Cormorant Garamond', serif;
-  }
-  h2.section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 400;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
-  }
-  .section-divider {
-    display: flex; align-items: center; gap: 12px;
-    margin: 1.5rem 0 2.5rem;
-  }
-  .section-divider-line { flex: 1; height: 1px; background: var(--border); }
-  .section-divider-ornament { color: var(--gold); font-size: 14px; }
+/* THEMES */
+.themes-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:2.5rem;}
+.tcard{border:1px solid var(--border);padding:1.75rem;background:#fff;position:relative;}
+.tcard-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:600;color:var(--parchment-dark);position:absolute;top:1rem;right:1.25rem;line-height:1;user-select:none;}
+.tcard-dot{width:10px;height:10px;border-radius:50%;margin-bottom:1rem;}
+.tcard h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--ink);margin-bottom:0.5rem;}
+.tcard p{font-size:0.9rem;color:var(--ink-soft);line-height:1.75;}
+.cours-box{border:1px solid var(--border-strong);padding:2rem;background:var(--gold-pale);}
+.cours-box h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--ink);margin-bottom:1rem;}
+.cours-box p{font-size:0.95rem;color:var(--ink-mid);line-height:1.8;}
 
-  /* MASQUES */
-  .masques-intro {
-    font-size: 1rem; color: var(--ink-soft); margin-bottom: 2.5rem;
-    font-style: italic;
-  }
-  .progress-wrap { margin-bottom: 2.5rem; }
-  .progress-label { font-size: 13px; color: var(--ink-soft); margin-bottom: 8px; letter-spacing: 0.05em; }
-  .progress-track { height: 2px; background: var(--border); border-radius: 1px; }
-  .progress-fill { height: 100%; background: var(--gold); border-radius: 1px; transition: width 0.5s ease; width: 0%; }
+/* APROPOS */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.about-col h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--ink);margin-bottom:1rem;}
+.about-col p{font-size:0.9rem;color:var(--ink-soft);line-height:1.8;margin-bottom:0.75rem;}
+.bib-item{padding:0.75rem 0;border-bottom:1px solid var(--border);font-size:0.85rem;color:var(--ink-mid);line-height:1.6;}
+.bib-item:first-of-type{border-top:1px solid var(--border);}
+.credits{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:0.85rem;color:var(--ink-soft);}
+.credits strong{font-weight:500;color:var(--ink);}
 
-  .masques-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 2rem;
-  }
-  .persona-card {
-    border: 1px solid var(--border);
-    background: white;
-    padding: 1.5rem;
-    cursor: pointer;
-    transition: border-color 0.2s, transform 0.15s;
-    position: relative;
-    overflow: hidden;
-  }
-  .persona-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0;
-    width: 3px; height: 100%;
-    background: var(--border-strong);
-    transition: background 0.3s;
-  }
-  .persona-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
-  .persona-card.revealed::before { background: var(--gold); }
-  .persona-card.revealed { border-color: rgba(184,146,42,0.4); }
-  .card-side-label {
-    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 0.5rem;
-  }
-  .card-mask-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem; font-weight: 600;
-    color: var(--ink); margin-bottom: 2px;
-  }
-  .card-mask-role { font-size: 0.85rem; color: var(--ink-soft); font-style: italic; margin-bottom: 1rem; }
-  .card-badge {
-    display: inline-block;
-    font-size: 11px; padding: 3px 10px;
-    border: 1px solid currentColor;
-    border-radius: 0;
-    letter-spacing: 0.05em;
-  }
-  .badge-masked { color: var(--rose); }
-  .badge-revealed { color: var(--teal); }
-  .card-hint { font-size: 12px; color: var(--gold); margin-top: 12px; font-style: italic; }
+/* FOOTER */
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;font-size:13px;color:var(--ink-soft);font-style:italic;}
 
-  .detail-box {
-    border: 1px solid var(--border-strong);
-    background: var(--gold-pale);
-    padding: 1.75rem;
-    display: none;
-    animation: fadeIn 0.4s ease;
-  }
-  .detail-box.visible { display: block; }
-  .detail-box h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; font-weight: 400;
-    color: var(--ink); margin-bottom: 0.75rem;
-  }
-  .detail-box p { font-size: 0.95rem; color: var(--ink-mid); margin-bottom: 1rem; line-height: 1.7; }
-  .detail-quote {
-    border-left: 2px solid var(--gold);
-    padding-left: 1rem;
-    font-style: italic;
-    font-size: 1rem;
-    color: var(--ink-soft);
-    font-family: 'Cormorant Garamond', serif;
-  }
-  .reset-link {
-    font-size: 13px; color: var(--ink-soft);
-    background: none; border: none; cursor: pointer;
-    text-decoration: underline; text-underline-offset: 3px;
-    margin-top: 1rem; display: block;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-  }
-
-  /* INTRIGUE */
-  .acte-nav { display: flex; gap: 0; margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); }
-  .acte-btn {
-    padding: 0.75rem 1.75rem;
-    background: none; border: none;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem; color: var(--ink-soft);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s;
-    letter-spacing: 0.05em;
-    margin-bottom: -1px;
-  }
-  .acte-btn:hover { color: var(--ink); }
-  .acte-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
-
-  .acte-panel { display: none; animation: fadeIn 0.3s ease; }
-  .acte-panel.active { display: block; }
-
-  .acte-moment {
-    display: flex; gap: 1.5rem; align-items: flex-start;
-    padding: 1.25rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .acte-moment:last-child { border-bottom: none; }
-  .moment-avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 14px; font-weight: 600;
-    flex-shrink: 0;
-  }
-  .av-silvia { background: #FAECE7; color: #993C1D; }
-  .av-dorante { background: #E6F1FB; color: #185FA5; }
-  .av-orgon { background: #FAEEDA; color: #854F0B; }
-  .av-both { background: #E1F5EE; color: #0F6E56; }
-  .moment-body {}
-  .moment-who { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
-  .moment-text { font-size: 1rem; color: var(--ink-mid); line-height: 1.7; }
-  .moment-quote {
-    margin-top: 10px;
-    padding: 10px 14px;
-    background: var(--gold-pale);
-    border-left: 2px solid var(--gold);
-    font-style: italic;
-    font-size: 0.9rem;
-    color: var(--ink-soft);
-  }
-
-  /* THÈMES */
-  .themes-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 3rem;
-  }
-  .theme-card {
-    border: 1px solid var(--border);
-    padding: 1.75rem;
-    background: white;
-    position: relative;
-  }
-  .theme-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem; font-weight: 600;
-    color: var(--parchment-dark);
-    position: absolute; top: 1rem; right: 1.25rem;
-    line-height: 1;
-    user-select: none;
-  }
-  .theme-icon {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    margin-bottom: 1rem;
-  }
-  .theme-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; font-weight: 600;
-    color: var(--ink); margin-bottom: 0.5rem;
-  }
-  .theme-card p { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7; }
-
-  .cours-box {
-    border: 1px solid var(--border-strong);
-    padding: 2rem;
-    background: var(--gold-pale);
-  }
-  .cours-box h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; color: var(--ink); margin-bottom: 1rem;
-  }
-  .cours-box p { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.8; }
-
-  /* À PROPOS */
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-  .about-col h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; color: var(--ink); margin-bottom: 1rem;
-  }
-  .about-col p { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 0.75rem; }
-  .bib-entry {
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.85rem;
-    color: var(--ink-mid);
-    line-height: 1.6;
-  }
-  .bib-entry:first-child { border-top: 1px solid var(--border); }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    text-align: center;
-    padding: 2rem;
-    font-size: 13px;
-    color: var(--ink-soft);
-    font-style: italic;
-  }
-
-  /* SECTION DIVIDERS */
-  .full-divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  .reveal-anim {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal-anim.in-view {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  @media (max-width: 640px) {
-    nav { padding: 0 1.25rem; }
-    .nav-links { gap: 1rem; }
-    .masques-grid { grid-template-columns: 1fr; }
-    .themes-grid { grid-template-columns: 1fr; }
-    .about-grid { grid-template-columns: 1fr; }
-    section { padding: 4rem 1.25rem; }
-  }
+/* RESPONSIVE */
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}
+  .nav-links{gap:1rem;}
+  .nav-links a{font-size:11px;}
+  .cards-grid{grid-template-columns:1fr;}
+  .themes-grid{grid-template-columns:1fr;}
+  .about-grid{grid-template-columns:1fr;}
+  .site-section{padding:3.5rem 1.25rem;}
+  .acte-btn{padding:0.75rem 1.25rem;}
+}
 </style>
 </head>
 <body>
@@ -421,360 +140,326 @@
   </ul>
 </nav>
 
-<!-- HERO -->
-<section id="hero" style="max-width:100%;padding:0;">
-  <div style="min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;">
-    <div class="hero-ornament">Comédie en trois actes · Paris, 1730</div>
-    <div class="hero-rule">
-      <span></span><div class="hero-rule-diamond"></div><span></span>
+<!-- ═══════════════ HERO ═══════════════ -->
+<div id="hero">
+  <span class="ornament">Comédie en trois actes · Paris, 1730</span>
+  <div class="hero-rule"><span></span><div class="diamond"></div><span></span></div>
+  <h1>Le Jeu de <em>l'amour</em><br>et du hasard</h1>
+  <p class="hero-sub">Pierre de Marivaux</p>
+  <p class="hero-desc">
+    « Qui suis-je vraiment, quand je porte le masque de l'autre ? »<br>
+    Une exploration interactive du double déguisement et du jeu des identités dans la comédie de Marivaux.
+  </p>
+  <div class="hero-nav">
+    <a href="#masques">Les personnages</a>
+    <a href="#intrigue">L'intrigue</a>
+    <a href="#themes">Les thèmes</a>
+    <a href="#apropos">À propos</a>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════ MASQUES ═══════════════ -->
+<div class="site-section" id="masques">
+  <span class="sec-label">Section I</span>
+  <h2>Les personnages &amp; leurs masques</h2>
+  <div class="sec-rule"><div class="sec-rule-line"></div><span class="sec-rule-dot">✦</span><div class="sec-rule-line"></div></div>
+
+  <p class="intro-p">Chaque personnage dissimule sa véritable identité. Cliquez sur une carte pour lever le masque et découvrir qui se cache derrière le costume.</p>
+
+  <div class="prog-wrap">
+    <div class="prog-label" id="prog-label">0 / 4 masques levés</div>
+    <div class="prog-track"><div class="prog-fill" id="prog-fill"></div></div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="pcard" id="card-silvia" onclick="reveal('silvia')">
+      <div class="pc-label">Se présente comme</div>
+      <div class="pc-name">Lisette</div>
+      <div class="pc-role">femme de chambre</div>
+      <span class="pc-badge badge-on">masque porté</span>
+      <div class="pc-hint">Cliquez pour révéler →</div>
     </div>
-    <h1 class="hero-title">Le Jeu de <em>l'amour</em><br>et du hasard</h1>
-    <p class="hero-subtitle">Pierre de Marivaux</p>
-    <p class="hero-desc">« Qui suis-je vraiment, quand je porte le masque de l'autre ? »<br>Une exploration du double déguisement et du jeu des identités.</p>
-    <div class="hero-scroll">
-      <span>Découvrir</span>
-      <div class="scroll-line"></div>
+    <div class="pcard" id="card-dorante" onclick="reveal('dorante')">
+      <div class="pc-label">Se présente comme</div>
+      <div class="pc-name">Bourguignon</div>
+      <div class="pc-role">valet</div>
+      <span class="pc-badge badge-on">masque porté</span>
+      <div class="pc-hint">Cliquez pour révéler →</div>
+    </div>
+    <div class="pcard" id="card-lisette" onclick="reveal('lisette')">
+      <div class="pc-label">Se présente comme</div>
+      <div class="pc-name">Silvia</div>
+      <div class="pc-role">maîtresse de maison</div>
+      <span class="pc-badge badge-on">masque porté</span>
+      <div class="pc-hint">Cliquez pour révéler →</div>
+    </div>
+    <div class="pcard" id="card-arlequin" onclick="reveal('arlequin')">
+      <div class="pc-label">Se présente comme</div>
+      <div class="pc-name">Dorante</div>
+      <div class="pc-role">maître et prétendant</div>
+      <span class="pc-badge badge-on">masque porté</span>
+      <div class="pc-hint">Cliquez pour révéler →</div>
     </div>
   </div>
-</section>
 
-<hr class="full-divider">
-
-<!-- MASQUES -->
-<section id="masques">
-  <div class="reveal-anim">
-    <div class="section-label">Section I</div>
-    <h2 class="section-title">Les personnages &amp; leurs masques</h2>
-    <div class="section-divider">
-      <div class="section-divider-line"></div>
-      <div class="section-divider-ornament">✦</div>
-      <div class="section-divider-line"></div>
-    </div>
-    <p class="masques-intro">Chaque personnage dissimule sa véritable identité. Cliquez sur une carte pour lever le masque et découvrir qui se cache derrière le costume.</p>
-
-    <div class="progress-wrap">
-      <div class="progress-label" id="prog-label">0 / 4 masques levés</div>
-      <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
-    </div>
-
-    <div class="masques-grid">
-      <div class="persona-card" id="card-silvia" onclick="revealCard('silvia')">
-        <div class="card-side-label">Se présente comme</div>
-        <div class="card-mask-name">Lisette</div>
-        <div class="card-mask-role">femme de chambre</div>
-        <span class="card-badge badge-masked">masque porté</span>
-        <div class="card-hint">Cliquez pour révéler →</div>
-      </div>
-      <div class="persona-card" id="card-dorante" onclick="revealCard('dorante')">
-        <div class="card-side-label">Se présente comme</div>
-        <div class="card-mask-name">Bourguignon</div>
-        <div class="card-mask-role">valet</div>
-        <span class="card-badge badge-masked">masque porté</span>
-        <div class="card-hint">Cliquez pour révéler →</div>
-      </div>
-      <div class="persona-card" id="card-lisette" onclick="revealCard('lisette')">
-        <div class="card-side-label">Se présente comme</div>
-        <div class="card-mask-name">Silvia</div>
-        <div class="card-mask-role">maîtresse de maison</div>
-        <span class="card-badge badge-masked">masque porté</span>
-        <div class="card-hint">Cliquez pour révéler →</div>
-      </div>
-      <div class="persona-card" id="card-arlequin" onclick="revealCard('arlequin')">
-        <div class="card-side-label">Se présente comme</div>
-        <div class="card-mask-name">Dorante</div>
-        <div class="card-mask-role">maître et prétendant</div>
-        <span class="card-badge badge-masked">masque porté</span>
-        <div class="card-hint">Cliquez pour révéler →</div>
-      </div>
-    </div>
-
-    <div id="detail-box" class="detail-box">
-      <h3 id="detail-title"></h3>
-      <p id="detail-motif"></p>
-      <div class="detail-quote" id="detail-quote"></div>
-    </div>
-    <button class="reset-link" onclick="resetCards()">↺ Remettre tous les masques</button>
+  <div id="detail-box" class="detail-box">
+    <h3 id="d-title"></h3>
+    <p id="d-motif"></p>
+    <div class="dquote" id="d-quote"></div>
   </div>
-</section>
+  <button class="reset-btn" onclick="resetAll()">↺ Remettre tous les masques</button>
+</div>
 
-<hr class="full-divider">
+<hr class="divider">
 
-<!-- INTRIGUE -->
-<section id="intrigue">
-  <div class="reveal-anim">
-    <div class="section-label">Section II</div>
-    <h2 class="section-title">L'intrigue acte par acte</h2>
-    <div class="section-divider">
-      <div class="section-divider-line"></div>
-      <div class="section-divider-ornament">✦</div>
-      <div class="section-divider-line"></div>
-    </div>
+<!-- ═══════════════ INTRIGUE ═══════════════ -->
+<div class="site-section" id="intrigue">
+  <span class="sec-label">Section II</span>
+  <h2>L'intrigue acte par acte</h2>
+  <div class="sec-rule"><div class="sec-rule-line"></div><span class="sec-rule-dot">✦</span><div class="sec-rule-line"></div></div>
 
-    <div class="acte-nav">
-      <button class="acte-btn active" onclick="showActe(1, this)">Acte I</button>
-      <button class="acte-btn" onclick="showActe(2, this)">Acte II</button>
-      <button class="acte-btn" onclick="showActe(3, this)">Acte III</button>
-    </div>
+  <div class="acte-nav">
+    <button class="acte-btn on" onclick="showActe(1,this)">Acte I — Les préparatifs</button>
+    <button class="acte-btn" onclick="showActe(2,this)">Acte II — Le trouble</button>
+    <button class="acte-btn" onclick="showActe(3,this)">Acte III — Le dénouement</button>
+  </div>
 
-    <div id="acte1" class="acte-panel active">
-      <div class="acte-moment">
-        <div class="moment-avatar av-silvia">S</div>
-        <div class="moment-body">
-          <div class="moment-who">Silvia</div>
-          <div class="moment-text">Silvia redoute d'épouser un inconnu dont elle ne connaît pas le vrai caractère. Elle convainc son père de lui permettre d'échanger sa place avec sa femme de chambre Lisette pour observer Dorante incognito.</div>
-          <div class="moment-quote">« Dorante arrive ici aujourd'hui ; si je pouvais le voir, l'examiner un peu sans qu'il me connût… »</div>
-        </div>
-      </div>
-      <div class="acte-moment">
-        <div class="moment-avatar av-dorante">D</div>
-        <div class="moment-body">
-          <div class="moment-who">Dorante</div>
-          <div class="moment-text">Par un hasard extraordinaire et symétrique, Dorante a eu exactement la même idée. Il arrive déguisé en valet sous le nom de « Bourguignon », laissant son vrai valet Arlequin jouer le rôle du maître.</div>
-        </div>
-      </div>
-      <div class="acte-moment">
-        <div class="moment-avatar av-orgon">O</div>
-        <div class="moment-body">
-          <div class="moment-who">Monsieur Orgon</div>
-          <div class="moment-text">Informé des deux déguisements simultanément, le père décide — amusé — de laisser la comédie se jouer sans rien révéler à aucun des deux jeunes gens.</div>
-        </div>
+  <div id="acte1" class="acte-panel on">
+    <div class="moment">
+      <div class="avatar av-s">S</div>
+      <div>
+        <div class="mom-who">Silvia</div>
+        <div class="mom-text">Silvia redoute d'épouser un inconnu dont elle ne connaît pas le vrai caractère. Elle convainc son père de lui permettre d'échanger sa place avec Lisette pour observer Dorante incognito.</div>
+        <div class="mom-quote">« Dorante arrive ici aujourd'hui ; si je pouvais le voir, l'examiner un peu sans qu'il me connût… »</div>
       </div>
     </div>
-
-    <div id="acte2" class="acte-panel">
-      <div class="acte-moment">
-        <div class="moment-avatar av-silvia">S</div>
-        <div class="moment-body">
-          <div class="moment-who">Silvia — le trouble</div>
-          <div class="moment-text">Silvia ressent une attirance troublante et irrésistible pour ce « valet » trop raffiné. Elle tente de résister, scandalisée de s'éprendre d'un domestique.</div>
-          <div class="moment-quote">« Quel homme pour un valet ! »</div>
-        </div>
-      </div>
-      <div class="acte-moment">
-        <div class="moment-avatar av-dorante">D</div>
-        <div class="moment-body">
-          <div class="moment-who">Dorante — l'aveu impossible</div>
-          <div class="moment-text">Dorante, lui aussi déchiré entre ses sentiments sincères et sa raison, avoue son amour à Silvia tout en sachant la distance sociale qu'il croit les séparer.</div>
-          <div class="moment-quote">« Je ne serais pas surpris quand ce serait aussi l'histoire de tous les maîtres. »</div>
-        </div>
-      </div>
-      <div class="acte-moment">
-        <div class="moment-avatar av-both">✦</div>
-        <div class="moment-body">
-          <div class="moment-who">Le double conflit intérieur</div>
-          <div class="moment-text">Les deux personnages vivent la même lutte : leur cœur reconnaît la valeur de l'autre, mais leur raison et les conventions sociales leur crient que cet amour est impossible.</div>
-        </div>
+    <div class="moment">
+      <div class="avatar av-d">D</div>
+      <div>
+        <div class="mom-who">Dorante</div>
+        <div class="mom-text">Par un hasard extraordinaire et parfaitement symétrique, Dorante a eu exactement la même idée. Il arrive déguisé en valet sous le nom de « Bourguignon », laissant son valet Arlequin jouer le rôle du maître.</div>
       </div>
     </div>
-
-    <div id="acte3" class="acte-panel">
-      <div class="acte-moment">
-        <div class="moment-avatar av-dorante">D</div>
-        <div class="moment-body">
-          <div class="moment-who">Dorante — la révélation</div>
-          <div class="moment-text">Dorante révèle sa véritable identité à Silvia. Il lui confesse qu'il l'aime même en la croyant servante — preuve absolue de la sincérité et de la pureté de ses sentiments.</div>
-          <div class="moment-quote">« Je vous aime avec toute la tendresse et tout le respect que je dois à ce que vous êtes. »</div>
-        </div>
-      </div>
-      <div class="acte-moment">
-        <div class="moment-avatar av-silvia">S</div>
-        <div class="moment-body">
-          <div class="moment-who">Silvia — le triomphe</div>
-          <div class="moment-text">Silvia, dont l'identité est enfin révélée, accepte Dorante avec joie. Elle avait attendu que Dorante déclare son amour en la croyant encore servante, voulant être aimée pour elle-même.</div>
-        </div>
-      </div>
-      <div class="acte-moment">
-        <div class="moment-avatar av-both">✦</div>
-        <div class="moment-body">
-          <div class="moment-who">Dénouement</div>
-          <div class="moment-text">Le hasard et l'amour triomphent. Les deux jeunes gens, ayant prouvé que leur amour transcende les apparences sociales, se retrouvent libres de s'unir avec la bénédiction de Monsieur Orgon.</div>
-        </div>
+    <div class="moment">
+      <div class="avatar av-o">O</div>
+      <div>
+        <div class="mom-who">Monsieur Orgon</div>
+        <div class="mom-text">Informé des deux déguisements simultanément, le père décide — amusé — de laisser la comédie se jouer sans rien révéler à aucun des deux jeunes gens. Mario, son fils, est dans la confidence.</div>
       </div>
     </div>
   </div>
-</section>
 
-<hr class="full-divider">
-
-<!-- THÈMES -->
-<section id="themes">
-  <div class="reveal-anim">
-    <div class="section-label">Section III</div>
-    <h2 class="section-title">Les grands thèmes</h2>
-    <div class="section-divider">
-      <div class="section-divider-line"></div>
-      <div class="section-divider-ornament">✦</div>
-      <div class="section-divider-line"></div>
-    </div>
-
-    <div class="themes-grid">
-      <div class="theme-card">
-        <div class="theme-num">I</div>
-        <div class="theme-icon" style="background:#9E4E4E;"></div>
-        <h3>L'amour sincère</h3>
-        <p>L'amour naît entre Silvia et Dorante avant toute connaissance de leur rang social. Le déguisement prouve que le cœur est capable de reconnaître la valeur véritable d'une personne, indépendamment de son statut.</p>
-      </div>
-      <div class="theme-card">
-        <div class="theme-num">II</div>
-        <div class="theme-icon" style="background:#B8922A;"></div>
-        <h3>Le déguisement révélateur</h3>
-        <p>Paradoxalement, c'est en cachant leur identité sociale que les personnages révèlent leur vraie nature. Le masque devient un outil de vérité plutôt que de tromperie : il libère les individus de leurs rôles imposés.</p>
-      </div>
-      <div class="theme-card">
-        <div class="theme-num">III</div>
-        <div class="theme-icon" style="background:#2E6B68;"></div>
-        <h3>La hiérarchie sociale</h3>
-        <p>La pièce interroge subtilement les conventions de classe du XVIIIe siècle. Silvia et Dorante luttent contre des sentiments jugés « impossibles » selon les normes de leur époque, sans jamais les remettre franchement en question.</p>
-      </div>
-      <div class="theme-card">
-        <div class="theme-num">IV</div>
-        <div class="theme-icon" style="background:#534AB7;"></div>
-        <h3>Le hasard amoureux</h3>
-        <p>Le double déguisement symétrique — deux personnes ayant eu la même idée sans se concerter — illustre comment le hasard peut servir les desseins du cœur. Le titre lui-même annonce cette alliance entre amour et fortune.</p>
+  <div id="acte2" class="acte-panel">
+    <div class="moment">
+      <div class="avatar av-s">S</div>
+      <div>
+        <div class="mom-who">Silvia — le trouble naissant</div>
+        <div class="mom-text">Silvia ressent une attirance troublante et irrésistible pour ce « valet » trop raffiné et trop spirituel. Elle tente de résister, scandalisée de s'éprendre de ce qu'elle croit être un domestique.</div>
+        <div class="mom-quote">« Quel homme pour un valet ! »</div>
       </div>
     </div>
-
-    <div class="cours-box">
-      <h3>La thématique de l'amour dans le cours</h3>
-      <p>Le Jeu de l'amour et du hasard illustre de façon exemplaire la thématique centrale de FREN 309. Marivaux y présente l'amour non pas comme une force simple et spontanée, mais comme une expérience profondément humaine, complexe et ambivalente. L'amour qu'éprouvent Silvia et Dorante n'est pas seulement une attraction physique : il s'agit d'une reconnaissance de l'âme de l'autre, indépendante du statut social. C'est un amour qui résiste à toutes les barrières, qui défie la logique et la raison, et qui finit par triompher grâce à sa sincérité — rejoignant ainsi les grandes questions sur la nature de l'amour explorées tout au long du semestre.</p>
-    </div>
-  </div>
-</section>
-
-<hr class="full-divider">
-
-<!-- À PROPOS -->
-<section id="apropos">
-  <div class="reveal-anim">
-    <div class="section-label">Section IV</div>
-    <h2 class="section-title">À propos</h2>
-    <div class="section-divider">
-      <div class="section-divider-line"></div>
-      <div class="section-divider-ornament">✦</div>
-      <div class="section-divider-line"></div>
-    </div>
-
-    <div class="about-grid">
-      <div class="about-col">
-        <h3>Marivaux (1688–1763)</h3>
-        <p>Pierre de Marivaux, de son nom complet Pierre Carlet de Chamblain de Marivaux, est l'un des dramaturges les plus importants du XVIIIe siècle français.</p>
-        <p>Né à Paris dans un milieu bourgeois, il fréquente les salons littéraires de l'époque, notamment celui de Madame de Lambert, et développe un style d'écriture psychologique et raffiné que la critique a baptisé le « marivaudage ».</p>
-        <p>Ce terme désigne l'art de décrire avec précision les nuances subtiles des états amoureux — les hésitations, les aveux timides, les contradictions du cœur.</p>
-        <p>Parmi ses autres œuvres majeures : <em>La Double Inconstance</em> (1723), <em>Les Fausses Confidences</em> (1737), et le roman <em>La Vie de Marianne</em>.</p>
+    <div class="moment">
+      <div class="avatar av-d">D</div>
+      <div>
+        <div class="mom-who">Dorante — l'aveu impossible</div>
+        <div class="mom-text">Dorante, lui aussi déchiré entre ses sentiments sincères et sa raison, avoue son amour à Silvia tout en croyant qu'elle est une simple servante. Le conflit intérieur est à son comble.</div>
+        <div class="mom-quote">« Je ne serais pas surpris quand ce serait aussi l'histoire de tous les maîtres. »</div>
       </div>
-      <div class="about-col">
-        <h3>Bibliographie</h3>
-        <div class="bib-entry">
-          Marivaux, Pierre de. <em>Le Jeu de l'amour et du hasard.</em> Édition numérique publiée par Gwénola, Ernest et Paul Fièvre. Theatre-classique.fr, octobre 2015. PDF. &lt;https://www.theatre-classique.fr/pages/pdf/MARIVAUX_JEUDELAMOURETDUHASARD.pdf&gt;
-        </div>
-        <div class="bib-entry">
-          Deloffre, Frédéric. « Marivaux. » <em>Encyclopædia Universalis.</em> Consulté en avril 2026. &lt;https://www.universalis.fr/encyclopedie/marivaux/&gt;
-        </div>
-        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);">
-          <p style="font-size:0.85rem;color:var(--ink-soft);">Produit créatif réalisé par <strong style="font-weight:500;color:var(--ink);">Abdoul Diallo</strong></p>
-          <p style="font-size:0.85rem;color:var(--ink-soft);">FREN 309 · Professeur Buzay · Printemps 2026</p>
-        </div>
+    </div>
+    <div class="moment">
+      <div class="avatar av-b">✦</div>
+      <div>
+        <div class="mom-who">Le double conflit intérieur</div>
+        <div class="mom-text">Les deux personnages vivent la même lutte : leur cœur reconnaît la valeur véritable de l'autre, mais leur raison et les conventions sociales leur crient que cet amour est impossible et honteux.</div>
       </div>
     </div>
   </div>
-</section>
+
+  <div id="acte3" class="acte-panel">
+    <div class="moment">
+      <div class="avatar av-d">D</div>
+      <div>
+        <div class="mom-who">Dorante — la révélation</div>
+        <div class="mom-text">Dorante révèle sa véritable identité à Silvia. Il lui confesse qu'il l'aimait même en la croyant servante — preuve absolue de la sincérité et de la pureté de ses sentiments envers elle.</div>
+        <div class="mom-quote">« Je vous aime avec toute la tendresse et tout le respect que je dois à ce que vous êtes. »</div>
+      </div>
+    </div>
+    <div class="moment">
+      <div class="avatar av-s">S</div>
+      <div>
+        <div class="mom-who">Silvia — le triomphe</div>
+        <div class="mom-text">Silvia, dont l'identité est enfin révélée, accepte Dorante avec joie. Elle avait voulu être aimée pour elle-même, au-delà de tout rang social — et c'est exactement ce qui s'est produit.</div>
+      </div>
+    </div>
+    <div class="moment">
+      <div class="avatar av-b">✦</div>
+      <div>
+        <div class="mom-who">Dénouement — le hasard et l'amour triomphent</div>
+        <div class="mom-text">Les deux jeunes gens, ayant prouvé que leur amour transcende les apparences sociales, se retrouvent libres de s'unir avec la pleine bénédiction de Monsieur Orgon. Le hasard a bien servi l'amour.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════ THÈMES ═══════════════ -->
+<div class="site-section" id="themes">
+  <span class="sec-label">Section III</span>
+  <h2>Les grands thèmes</h2>
+  <div class="sec-rule"><div class="sec-rule-line"></div><span class="sec-rule-dot">✦</span><div class="sec-rule-line"></div></div>
+
+  <div class="themes-grid">
+    <div class="tcard">
+      <div class="tcard-num">I</div>
+      <div class="tcard-dot" style="background:#9E4E4E;"></div>
+      <h3>L'amour sincère</h3>
+      <p>L'amour naît entre Silvia et Dorante avant toute connaissance de leur rang social. Le déguisement prouve que le cœur est capable de reconnaître la valeur véritable d'une personne, indépendamment de son statut.</p>
+    </div>
+    <div class="tcard">
+      <div class="tcard-num">II</div>
+      <div class="tcard-dot" style="background:#B8922A;"></div>
+      <h3>Le déguisement révélateur</h3>
+      <p>Paradoxalement, c'est en cachant leur identité sociale que les personnages révèlent leur vraie nature. Le masque devient un outil de vérité : il libère les individus de leurs rôles imposés par la société.</p>
+    </div>
+    <div class="tcard">
+      <div class="tcard-num">III</div>
+      <div class="tcard-dot" style="background:#2E6B68;"></div>
+      <h3>La hiérarchie sociale</h3>
+      <p>La pièce interroge subtilement les conventions de classe du XVIIIe siècle. Silvia et Dorante luttent contre des sentiments jugés « impossibles » selon les normes de leur époque, sans jamais les remettre franchement en question.</p>
+    </div>
+    <div class="tcard">
+      <div class="tcard-num">IV</div>
+      <div class="tcard-dot" style="background:#534AB7;"></div>
+      <h3>Le hasard amoureux</h3>
+      <p>Le double déguisement symétrique — deux personnes ayant eu la même idée sans se concerter — illustre comment le hasard peut servir les desseins du cœur. Le titre lui-même annonce cette alliance entre amour et fortune.</p>
+    </div>
+  </div>
+
+  <div class="cours-box">
+    <h3>Lien avec la thématique du cours — l'amour</h3>
+    <p>Le Jeu de l'amour et du hasard illustre de façon exemplaire la thématique centrale de FREN 309. Marivaux y présente l'amour non pas comme une force simple et spontanée, mais comme une expérience profondément humaine, complexe et ambivalente. L'amour qu'éprouvent Silvia et Dorante n'est pas seulement une attraction physique : il s'agit d'une reconnaissance de l'âme de l'autre, indépendante du statut social. C'est un amour qui résiste à toutes les barrières, qui défie la logique et la raison, et qui finit par triompher grâce à sa sincérité — rejoignant ainsi les grandes questions sur la nature de l'amour explorées tout au long du semestre.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════ À PROPOS ═══════════════ -->
+<div class="site-section" id="apropos">
+  <span class="sec-label">Section IV</span>
+  <h2>À propos</h2>
+  <div class="sec-rule"><div class="sec-rule-line"></div><span class="sec-rule-dot">✦</span><div class="sec-rule-line"></div></div>
+
+  <div class="about-grid">
+    <div class="about-col">
+      <h3>Marivaux (1688–1763)</h3>
+      <p>Pierre de Marivaux, de son nom complet Pierre Carlet de Chamblain de Marivaux, est l'un des dramaturges les plus importants du XVIIIe siècle français.</p>
+      <p>Né à Paris dans un milieu bourgeois, il fréquente les salons littéraires de l'époque, notamment celui de Madame de Lambert. Il développe un style d'écriture psychologique et raffiné que la critique a baptisé le « marivaudage ».</p>
+      <p>Ce terme désigne l'art de décrire avec précision les nuances subtiles des états amoureux — les hésitations, les aveux timides, les contradictions du cœur face aux conventions sociales.</p>
+      <p>Parmi ses autres œuvres majeures : <em>La Double Inconstance</em> (1723), <em>Les Fausses Confidences</em> (1737), et le roman <em>La Vie de Marianne</em>.</p>
+    </div>
+    <div class="about-col">
+      <h3>Bibliographie</h3>
+      <div class="bib-item">Marivaux, Pierre de. <em>Le Jeu de l'amour et du hasard.</em> Édition numérique publiée par Gwénola, Ernest et Paul Fièvre. Theatre-classique.fr, octobre 2015. &lt;https://www.theatre-classique.fr/pages/pdf/MARIVAUX_JEUDELAMOURETDUHASARD.pdf&gt;</div>
+      <div class="bib-item">Deloffre, Frédéric. « Marivaux. » <em>Encyclopædia Universalis.</em> Consulté en avril 2026. &lt;https://www.universalis.fr/encyclopedie/marivaux/&gt;</div>
+      <div class="credits">
+        Produit créatif réalisé par <strong>Abdoul Diallo</strong><br>
+        FREN 309 · Professeur Buzay · Printemps 2026
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer>
   <em>Le Jeu de l'amour et du hasard</em> · Marivaux · 1730 &nbsp;✦&nbsp; Abdoul Diallo · FREN 309 · 2026
 </footer>
 
 <script>
-const cardData = {
-  silvia: {
-    trueName: 'Silvia',
-    trueRole: 'fille de Monsieur Orgon, future épouse',
-    maskName: 'Lisette', maskRole: 'femme de chambre',
-    title: 'Silvia — sous le masque de Lisette',
-    motif: 'Silvia craint d'épouser un homme dont elle ne connaît pas le vrai caractère. En se déguisant en servante, elle espère observer Dorante librement, sans être jugée ni jugée par lui.',
-    quote: '« Frankement, je ne haïrais pas de lui plaire sous le personnage que je joue, je ne serais pas fâchée de subjuguer sa raison… »'
+var cardData = {
+  silvia:{
+    trueName:'Silvia', trueRole:'fille de Monsieur Orgon, future épouse',
+    maskName:'Lisette', maskRole:'femme de chambre',
+    title:'Silvia — sous le masque de Lisette',
+    motif:'Silvia craint d\'épouser un homme dont elle ne connaît pas le vrai caractère. En se déguisant en servante, elle espère observer Dorante librement, sans être jugée ni contrainte par les conventions du mariage.',
+    quote:'« Franchement, je ne haïrais pas de lui plaire sous le personnage que je joue, je ne serais pas fâchée de subjuguer sa raison… »'
   },
-  dorante: {
-    trueName: 'Dorante',
-    trueRole: 'prétendant de Silvia, jeune homme de condition',
-    maskName: 'Bourguignon', maskRole: 'valet',
-    title: 'Dorante — sous le masque de Bourguignon',
-    motif: 'Dorante veut observer Silvia et la connaître avant de s'engager définitivement dans le mariage. Il arrive déguisé en valet pour saisir quelques traits de son vrai caractère.',
-    quote: '« Tu me soumets, je suis presque timide, ma familiarité n'oserait s'apprivoiser avec toi… »'
+  dorante:{
+    trueName:'Dorante', trueRole:'prétendant de Silvia, jeune homme de condition',
+    maskName:'Bourguignon', maskRole:'valet',
+    title:'Dorante — sous le masque de Bourguignon',
+    motif:'Dorante veut observer Silvia et la connaître avant de s\'engager dans le mariage. Il arrive déguisé en valet pour saisir son vrai caractère, loin des contraintes de la première rencontre officielle.',
+    quote:'« Tu me soumets, je suis presque timide, ma familiarité n\'oserait s\'apprivoiser avec toi… »'
   },
-  lisette: {
-    trueName: 'Lisette',
-    trueRole: 'femme de chambre de Silvia',
-    maskName: 'Silvia', maskRole: 'maîtresse de maison',
-    title: 'Lisette — sous le masque de Silvia',
-    motif: 'Lisette joue le rôle de maîtresse pour servir sa maîtresse. Elle s'y prête avec enthousiasme, y voyant l'occasion de paraître en femme de qualité — avec une maladresse comique révélatrice.',
-    quote: '« Moi, Monsieur, vous savez qui je suis, essayez de m'en conter, et manquez de respect, si vous l'osez… »'
+  lisette:{
+    trueName:'Lisette', trueRole:'femme de chambre de Silvia',
+    maskName:'Silvia', maskRole:'maîtresse de maison',
+    title:'Lisette — sous le masque de Silvia',
+    motif:'Lisette joue le rôle de maîtresse pour servir Silvia. Elle s\'y prête avec enthousiasme — et une maladresse comique qui révèle l\'artificialité des codes sociaux de la noblesse.',
+    quote:'« Moi, Monsieur, vous savez qui je suis, essayez de m\'en conter, et manquez de respect, si vous l\'osez… »'
   },
-  arlequin: {
-    trueName: 'Arlequin',
-    trueRole: 'valet de Dorante',
-    maskName: 'Dorante', maskRole: 'maître et prétendant',
-    title: 'Arlequin — sous le masque de Dorante',
-    motif: 'Arlequin joue le rôle du maître sur ordre de Dorante. Son comportement grotesque et maladroit en « maître » constitue un miroir comique qui souligne l'artificialité des codes sociaux.',
-    quote: 'En imitant le maître avec maladresse, Arlequin révèle l'artificialité des codes de la noblesse — et fait rire le public de ces conventions.'
+  arlequin:{
+    trueName:'Arlequin', trueRole:'valet de Dorante',
+    maskName:'Dorante', maskRole:'maître et prétendant',
+    title:'Arlequin — sous le masque de Dorante',
+    motif:'Arlequin joue le rôle du maître sur ordre de Dorante. Son comportement grotesque en faux noble constitue un miroir comique qui tourne en dérision les codes de la haute société.',
+    quote:'En imitant maladroitement le maître, Arlequin révèle l\'artificialité des conventions sociales — et déclenche le rire du public.'
   }
 };
 
-let revealed = new Set();
+var revealed = {};
 
-function revealCard(id) {
-  if (revealed.has(id)) return;
-  revealed.add(id);
-  const d = cardData[id];
-  const card = document.getElementById('card-' + id);
+function reveal(id) {
+  if (revealed[id]) return;
+  revealed[id] = true;
+  var d = cardData[id];
+  var card = document.getElementById('card-' + id);
   card.classList.add('revealed');
-  card.querySelector('.card-side-label').textContent = 'Véritable identité';
-  card.querySelector('.card-mask-name').textContent = d.trueName;
-  card.querySelector('.card-mask-role').textContent = d.trueRole;
-  card.querySelector('.card-badge').className = 'card-badge badge-revealed';
-  card.querySelector('.card-badge').textContent = 'masque levé';
-  card.querySelector('.card-hint').style.display = 'none';
+  card.querySelector('.pc-label').textContent = 'Véritable identité';
+  card.querySelector('.pc-name').textContent = d.trueName;
+  card.querySelector('.pc-role').textContent = d.trueRole;
+  var badge = card.querySelector('.pc-badge');
+  badge.className = 'pc-badge badge-off';
+  badge.textContent = 'masque levé';
+  card.querySelector('.pc-hint').style.display = 'none';
 
-  const box = document.getElementById('detail-box');
-  document.getElementById('detail-title').textContent = d.title;
-  document.getElementById('detail-motif').textContent = d.motif;
-  document.getElementById('detail-quote').textContent = d.quote;
-  box.classList.add('visible');
+  document.getElementById('d-title').textContent = d.title;
+  document.getElementById('d-motif').textContent = d.motif;
+  document.getElementById('d-quote').textContent = d.quote;
+  document.getElementById('detail-box').className = 'detail-box show';
 
-  const n = revealed.size;
+  var n = Object.keys(revealed).length;
   document.getElementById('prog-label').textContent = n + ' / 4 masques levés';
   document.getElementById('prog-fill').style.width = (n * 25) + '%';
 }
 
-function resetCards() {
-  revealed.clear();
-  const names = { silvia:'Lisette', dorante:'Bourguignon', lisette:'Silvia', arlequin:'Dorante' };
-  const roles = { silvia:'femme de chambre', dorante:'valet', lisette:'maîtresse de maison', arlequin:'maître et prétendant' };
-  ['silvia','dorante','lisette','arlequin'].forEach(id => {
-    const card = document.getElementById('card-' + id);
+function resetAll() {
+  revealed = {};
+  var names = {silvia:'Lisette', dorante:'Bourguignon', lisette:'Silvia', arlequin:'Dorante'};
+  var roles = {silvia:'femme de chambre', dorante:'valet', lisette:'maîtresse de maison', arlequin:'maître et prétendant'};
+  ['silvia','dorante','lisette','arlequin'].forEach(function(id) {
+    var card = document.getElementById('card-' + id);
     card.classList.remove('revealed');
-    card.querySelector('.card-side-label').textContent = 'Se présente comme';
-    card.querySelector('.card-mask-name').textContent = names[id];
-    card.querySelector('.card-mask-role').textContent = roles[id];
-    card.querySelector('.card-badge').className = 'card-badge badge-masked';
-    card.querySelector('.card-badge').textContent = 'masque porté';
-    card.querySelector('.card-hint').style.display = '';
+    card.querySelector('.pc-label').textContent = 'Se présente comme';
+    card.querySelector('.pc-name').textContent = names[id];
+    card.querySelector('.pc-role').textContent = roles[id];
+    var badge = card.querySelector('.pc-badge');
+    badge.className = 'pc-badge badge-on';
+    badge.textContent = 'masque porté';
+    card.querySelector('.pc-hint').style.display = '';
   });
-  document.getElementById('detail-box').classList.remove('visible');
+  document.getElementById('detail-box').className = 'detail-box';
   document.getElementById('prog-label').textContent = '0 / 4 masques levés';
   document.getElementById('prog-fill').style.width = '0%';
 }
 
 function showActe(n, btn) {
-  document.querySelectorAll('.acte-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.acte-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('acte' + n).classList.add('active');
-  btn.classList.add('active');
+  document.querySelectorAll('.acte-panel').forEach(function(p){ p.className = 'acte-panel'; });
+  document.querySelectorAll('.acte-btn').forEach(function(b){ b.className = 'acte-btn'; });
+  document.getElementById('acte' + n).className = 'acte-panel on';
+  btn.className = 'acte-btn on';
 }
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal-anim').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
